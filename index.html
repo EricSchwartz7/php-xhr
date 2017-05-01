@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello PHP</title>
+    <script type="text/javascript">
+
+      function refreshData(){
+        var display = document.getElementById("content");
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET", "hello.php");
+        xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xmlhttp.send();
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState === 4 && this.status === 200) {
+            display.innerHTML = this.responseText;
+          } else {
+            display.innerHTML = "Loading...";
+          };
+        }
+      }
+
+    </script>
+  </head>
+  <body>
+    <button onclick=refreshData()>Say Hello</button>
+    <div id="content" />
+  </body>
+</html>
